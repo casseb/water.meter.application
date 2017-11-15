@@ -1,0 +1,64 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-securing-web'
+    version =  '0.1.0'
+    manifest {
+		attributes 'Main-Class': 'com.concretepage.Spring4Hibernate4Test'
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    // tag::security[]
+    //compile("org.springframework.boot:spring-boot-starter-security")
+    // end::security[]
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE'
+   	compile 'javax.servlet:javax.servlet-api:3.1.0'
+   	compile 'org.javassist:javassist:3.15.0-GA'
+   	compile 'commons-dbcp:commons-dbcp:1.4'
+   	compile 'org.postgresql:postgresql:42.1.4.jre7' 
+   	testCompile('org.springframework.boot:spring-boot-starter-test')
+    //testCompile("org.springframework.security:spring-security-test")
+}
+
+/*
+1-Login
+Pede usuário e senha, ao validar retorna status accepted ou rejected
+
+2-Lista de Caixa Dágua
+Pede usuário e vai retornar uma lista com todos os atributos da caixa dágua
+retornar um ou mais: ok senão notfound
+
+3-Litros atual entrada
+Pede caixa dágua e medida, popula o map.
+
+4-Litros atual saida
+Pede caixa dagua, consulta o map.
+
+5-Medida Controlada
+Metodo (não é rota) que popula o banco com as medidas do map
+
+6-Consulta Medidas
+Rota que pede data completa (em string), e retorna as medições do dia (espero que 24)
+*/
+
