@@ -19,7 +19,6 @@ import br.com.simnetwork.model.service.UsuarioService;
 import br.com.simnetwork.view.View;
 
 @RestController
-@RequestMapping(value = "/usuario")
 public class UsuarioController {
 
 	@Autowired
@@ -29,7 +28,7 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuario/save", method = RequestMethod.POST)
 	@JsonView(View.All.class)
 	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario, HttpServletRequest request, HttpServletResponse response) {
 		Usuario novoUsuario =  usuarioService.findByLogin(usuario.getLogin());
@@ -46,6 +45,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> login(@RequestBody Usuario usuario) {
 		Usuario usuarioTarget = usuarioService.findByLogin(usuario.getLogin());
 		if(usuarioTarget != null && usuarioTarget.getSenha().equals(usuario.getSenha())) {
+			
 			return new ResponseEntity<Usuario>(usuarioTarget, HttpStatus.ACCEPTED);
 		}else {
 			return new ResponseEntity<Usuario>(HttpStatus.NOT_ACCEPTABLE);

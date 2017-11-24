@@ -30,7 +30,7 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     // tag::security[]
-    //compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-security")
     // end::security[]
     compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE'
    	compile 'javax.servlet:javax.servlet-api:3.1.0'
@@ -38,10 +38,14 @@ dependencies {
    	compile 'commons-dbcp:commons-dbcp:1.4'
    	compile 'org.postgresql:postgresql:42.1.4.jre7' 
    	testCompile('org.springframework.boot:spring-boot-starter-test')
+   	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
+   	compile 'com.google.guava:guava:23.5-jre'
     //testCompile("org.springframework.security:spring-security-test")
 }
 
 /*
+Tópicos Concluídos
+
 1-Login
 Pede usuário e senha, ao validar retorna status accepted ou rejected
 
